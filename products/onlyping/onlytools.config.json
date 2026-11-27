@@ -4,15 +4,15 @@
     "name": "OnlyPing",
     "slug": "onlyping",
     "legacyNames": [],
-    "tagline": "TODO: verify product tagline",
-    "description": "TODO: verify against source code",
+    "tagline": "截图步骤标注与操作指引制作",
+    "description": "多步骤截图标注、说明编辑及 PNG、PDF、Word 导出",
     "category": "Image Tools",
-    "status": "TODO",
+    "status": "alpha",
     "platforms": [
       "Windows"
     ],
     "architectures": [
-      "TODO"
+      "x64"
     ]
   },
   "repository": {
@@ -24,16 +24,20 @@
   "release": {
     "tagPrefix": "v",
     "titleFormat": "{product} v{version}",
-    "assetNaming": "{product}-Setup-v{version}-{arch}.exe",
+    "assetNaming": "OnlyPing_{version}_x64-setup.exe",
     "requireSha256": true,
     "mirrorDownloads": []
   },
   "build": {
     "commands": {
-      "test": "TODO",
-      "build": "TODO"
+      "test": "npm test",
+      "build": "npm run desktop:build"
     },
-    "artifactsPath": "TODO"
+    "artifactsPath": "src-tauri/target/release/bundle/nsis",
+    "versionFiles": [
+      "package.json",
+      "src-tauri/tauri.conf.json"
+    ]
   },
   "documentation": {
     "language": "zh-CN",
@@ -42,15 +46,15 @@
   },
   "verification": {
     "windowsVersions": [
-      "TODO"
+      "待真实 Windows 验收"
     ],
     "architectures": [
-      "TODO"
+      "x64"
     ],
     "runtimeDependencies": [
-      "TODO"
+      "WebView2 (Tauri runtime; verify on clean Windows installation)"
     ],
-    "adminPrivilegesRequired": "TODO",
-    "dataStorageAndNetworkBehavior": "TODO"
+    "adminPrivilegesRequired": "未验证",
+    "dataStorageAndNetworkBehavior": "桌面 SQLite 与 Windows 凭据管理器；AI 功能按用户配置连接外部服务，更新服务当前未配置签名公钥"
   }
 }

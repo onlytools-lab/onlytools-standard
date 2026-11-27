@@ -27,6 +27,9 @@ jobs:
       - name: Validate product config
         if: ${{ hashFiles('onlytools.config.json') != '' }}
         run: python scripts/ods.py validate-config --config onlytools.config.json
+      - name: Cross-stack version checker tests
+        run: python -m unittest discover -s scripts -p 'test_product_version.py' -v
       - name: Validate README structure
         if: ${{ hashFiles('onlytools.config.json') != '' && hashFiles('README.md') != '' }}
         run: python scripts/ods.py validate-readme --readme README.md
+

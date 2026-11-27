@@ -98,6 +98,28 @@ CHANGELOG.md
 ```bash
 python scripts/ods.py validate-config --config onlytools.config.json
 python scripts/ods.py validate-readme --readme README.md
+python scripts/ods.py validate-version --version 1.2.0        # 版本一致性（tag ↔ package.json ↔ tauri.conf.json）
+python scripts/ods.py validate-changelog --version 1.2.0      # 发布用：当前版本章节闭环
+python scripts/ods.py validate-changelog --structure-only     # 日常 PR 用：只看结构
+```
+
+发布说明完整校验（发布门禁用）：
+
+```bash
+python scripts/ods.py validate-release --notes RELEASE-NOTES-v1.2.0.md --version 1.2.0
+```
+
+Draft Release 安全收尾（白名单清理 + 清单核验 + 转正式，详见 `scripts/finalize_release.py` 顶部注释）：
+
+```bash
+GH_TOKEN=... REPO=owner/repo TAG=v1.2.0 python scripts/finalize_release.py
+```
+
+校验器自带正反例回归测试：
+
+```bash
+python scripts/test_ods.py
+python scripts/test_finalize_release.py
 ```
 
 准备 Release Notes 草稿：

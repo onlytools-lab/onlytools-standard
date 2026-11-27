@@ -1,0 +1,1 @@
+Read the repository-root `AGENTS.md` and `onlytools.config.json` before making changes. Follow their ONLYTOOLS requirements. Never invent product facts or claim unexecuted tests passed.\n

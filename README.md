@@ -1,4 +1,4 @@
-# ONLYTOOLS Standard v2.0
+# ONLYTOOLS Standard v2.0.1
 
 **统一 AI 工程规范与软件发布治理标准**
 
@@ -236,5 +236,12 @@ AI 可以协助编写代码、更新文档、运行测试、构建安装包和�
 
 ---
 
-**ONLYTOOLS Standard v2.0**  
+**ONLYTOOLS Standard v2.0.1**  
 统一标准，减少重复劳动，让每个产品都保持专业、一致、可维护。
+
+
+## 多技术栈版本检查（接入试点）
+
+`scripts/check_product_version.py` 从产品的 `onlytools.config.json` 中读取 `build.versionFiles`，支持 JSON（package.json、tauri.conf.json）及 MSBuild XML（.csproj、.props）版本字段。未配置时默认检查 Tauri 两文件。该独立检查器不替换现有 `ods.py validate-version`，避免破坏已部署 CLI。发布资产与签名工作流必须按产品实际情况适配；OnlyPing 的现有签名发布工作流保持不变。
+
+示例：`python scripts/check_product_version.py --version 0.1.4-alpha.1`。
